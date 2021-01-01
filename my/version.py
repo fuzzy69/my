@@ -1,4 +1,4 @@
-__version__ = (2020, 9, 7, 33019)
+__version__ = (2021, 1, 1, 61972)
 
 version_string = '.'.join(str(x) for x in __version__)
 

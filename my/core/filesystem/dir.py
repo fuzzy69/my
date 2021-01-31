@@ -1,4 +1,4 @@
-from os import listdir, makedirs
+from os import listdir, makedirs, remove
 from os.path import exists, isfile, join
 from typing import AnyStr, Iterable, List, Optional, Union
 
@@ -32,14 +32,14 @@ def clear_dir(dir_path: str, filter_text: Optional[AnyStr]) -> List[AnyStr]:
     """
     removed_files = []
     for file_path in list_dir(dir_path):
-        # file_path = join(dir_path, file_name)
-        # if filter_text is not None:
-        # match = get_match(filter_regex, file_path)
-        # matches = match(filter_regex, file_path)
-        # if not matches:
-        #     continue
+        if filter_text is not None:
+            # match = get_match(filter_regex, file_path)
+            # matches = match(filter_regex, file_path)
+            # if not matches:
+            if filter_text not in file_path:
+                continue
         if isfile(file_path):
-            # remove(file_path)
+            remove(file_path)
             removed_files.append(file_path)
 
     return removed_files
